@@ -1,6 +1,14 @@
 ---
   version: '3.5'
 
+  x-config:
+    &secrets-config
+    secrets:
+      - source: tomcat_ssl_crt
+        target: /home/spring/tomcat-wildcard-ssl.crt
+      - source: tomcat_ssl_key
+        target: /home/spring/tomcat-wildcard-ssl.key
+
   secrets:
     tomcat_ssl_crt:
       file: ./ssl/tomcat-wildcard-dev.crt
@@ -13,11 +21,7 @@
       network_mode: "host"
       ports:
         - "8443:8443"
-      secrets:
-        - source: tomcat_ssl_crt
-          target: /certificates/tomcat-wildcard-dev.crt
-        - source: tomcat_ssl_key
-          target: /certificates/tomcat-wildcard-dev.key
+      << : *secrets-config
       env_file:
         - ./docker/configuration/waterauth/config.env
         - ./docker/secrets/common/secrets.env
@@ -25,11 +29,7 @@
       image: code.chs.usgs.gov:5001/wma/docker/aqcu/aqcu-repgen
       ports:
         - "6311:6311"
-      secrets:
-        - source: tomcat_ssl_crt
-          target: /certificates/tomcat-wildcard-dev.crt
-        - source: tomcat_ssl_key
-          target: /certificates/tomcat-wildcard-dev.key
+      << : *secrets-config
     rabbitmq:
       image: rabbitmq:3-management
       environment:
@@ -46,11 +46,7 @@
         - "water-auth"
       ports:
         - "8446:8446"
-      secrets:
-        - source: tomcat_ssl_crt
-          target: /certificates/tomcat-wildcard-dev.crt
-        - source: tomcat_ssl_key
-          target: /certificates/tomcat-wildcard-dev.key
+      << : *secrets-config
       env_file:
         - ./docker/configuration/aqcu-ui/config.env
         - ./docker/configuration/common/config.env
@@ -63,11 +59,7 @@
         - "7499:7499"
       depends_on:
         - "water-auth"
-      secrets:
-        - source: tomcat_ssl_crt
-          target: /certificates/tomcat-wildcard-dev.crt
-        - source: tomcat_ssl_key
-          target: /certificates/tomcat-wildcard-dev.key
+      << : *secrets-config
       env_file:
         - ./docker/configuration/aqcu-gateway/config.env
         - ./docker/configuration/common/config.env
@@ -78,11 +70,7 @@
       network_mode: "host"
       ports:
         - "7500:7500"
-      secrets:
-        - source: tomcat_ssl_crt
-          target: /certificates/tomcat-wildcard-dev.crt
-        - source: tomcat_ssl_key
-          target: /certificates/tomcat-wildcard-dev.key
+      << : *secrets-config
       env_file:
         - ./docker/configuration/aqcu-java-to-r/config.env
         - ./docker/configuration/common/config.env
@@ -95,11 +83,7 @@
         - "7501:7501"
       depends_on:
         - "water-auth"
-      secrets:
-        - source: tomcat_ssl_crt
-          target: /certificates/tomcat-wildcard-dev.crt
-        - source: tomcat_ssl_key
-          target: /certificates/tomcat-wildcard-dev.key
+      << : *secrets-config
       env_file:
         - ./docker/configuration/aqcu-tss-report/config.env
         - ./docker/configuration/common/config.env
@@ -112,11 +96,7 @@
         - "7502:7502"
       depends_on:
         - "water-auth"
-      secrets:
-        - source: tomcat_ssl_crt
-          target: /certificates/tomcat-wildcard-dev.crt
-        - source: tomcat_ssl_key
-          target: /certificates/tomcat-wildcard-dev.key
+      << : *secrets-config
       env_file:
         - ./docker/configuration/aqcu-dv-hydro-report/config.env
         - ./docker/configuration/common/config.env
@@ -127,11 +107,7 @@
       network_mode: "host"
       ports:
         - "7503:7503"
-      secrets:
-        - source: tomcat_ssl_crt
-          target: /certificates/tomcat-wildcard-dev.crt
-        - source: tomcat_ssl_key
-          target: /certificates/tomcat-wildcard-dev.key
+      << : *secrets-config
       env_file:
         - ./docker/configuration/aqcu-lookups/config.env
         - ./docker/configuration/common/config.env
