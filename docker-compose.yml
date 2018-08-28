@@ -9,7 +9,7 @@
 
   services:
     water-auth:
-      image: code.chs.usgs.gov:5001/wma-devops-public/waterauth-server:latest
+      image: cidasdpdasartip.cr.usgs.gov:8447/water_auth_server:latest
       network_mode: "host"
       ports:
         - "8443:8443"
@@ -22,7 +22,7 @@
         - ./docker/configuration/waterauth/config.env
         - ./docker/secrets/common/secrets.env
     rserve:
-      image: code.chs.usgs.gov:5001/wma/docker/aqcu/aqcu-repgen
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-repgen:latest
       ports:
         - "6311:6311"
       secrets:
@@ -32,15 +32,15 @@
           target: /certificates/tomcat-wildcard-dev.key
     rabbitmq:
       image: rabbitmq:3-management
-      environment:
-        - RABBITMQ_DEFAULT_USER=docker
-        - RABBITMQ_DEFAULT_PASS=docker
       ports:
         - "5672:5672"
         - "15672:15672"
         - "25672:25672"
+      env_file:
+        - ./docker/configuration/rabbitmq/config.env
+        - ./docker/secrets/rabbitmq/secrets.env
     aqcu-ui:
-      image: code.chs.usgs.gov:5001/wma-devops-public/aqcu-ui:latest
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-ui:latest
       network_mode: "host"
       depends_on:
         - "water-auth"
@@ -57,7 +57,7 @@
         - ./docker/secrets/aqcu-ui/secrets.env
         - ./docker/secrets/common/secrets.env
     aqcu-gateway:
-      image: code.chs.usgs.gov:5001/wma-devops-public/aqcu-gateway:latest
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-gateway:latest
       network_mode: "host"
       ports:
         - "7499:7499"
@@ -74,7 +74,7 @@
         - ./docker/secrets/aqcu-gateway/secrets.env
         - ./docker/secrets/common/secrets.env
     aqcu-java-to-r:
-      image: code.chs.usgs.gov:5001/wma-devops-public/aqcu-java-to-r:latest
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-java-to-r:latest
       network_mode: "host"
       ports:
         - "7500:7500"
@@ -89,7 +89,7 @@
         - ./docker/secrets/aqcu-java-to-r/secrets.env
         - ./docker/secrets/common/secrets.env
     aqcu-tss-report:
-      image: code.chs.usgs.gov:5001/wma-devops-public/aqcu-tss-report:latest
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-tss-report:latest
       network_mode: "host"
       ports:
         - "7501:7501"
@@ -106,7 +106,7 @@
         - ./docker/secrets/aqcu-tss-report/secrets.env
         - ./docker/secrets/common/secrets.env
     aqcu-dv-hydro-report:
-      image: code.chs.usgs.gov:5001/wma-devops-public/aqcu-dv-hydro-report:latest
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-dv-hydro-report:latest
       network_mode: "host"
       ports:
         - "7502:7502"
@@ -123,7 +123,7 @@
         - ./docker/secrets/aqcu-dv-hydro-report/secrets.env
         - ./docker/secrets/common/secrets.env
     aqcu-lookups:
-      image: code.chs.usgs.gov:5001/wma-devops-public/aqcu-lookups:latest
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-lookups:latest
       network_mode: "host"
       ports:
         - "7503:7503"

@@ -22,17 +22,22 @@ The docker configuration is currently located in `aqcu-local-dev/docker-referenc
 Follow the steps in the README located in the tomcat sub-directory of this project.
 
 ### Build and Copy Tomcat WARs
-Unlike the dockerized services which are pre-built and ready to use you must build (or download from our Nexus) the WARs for the AQCU legacy Tomcat and NWIS-RA Tomcat and place them into the respective webapps directories of those tomcat instances with the correct file names (generally just involves removing build info from the built WARs like the version number and `SNAPSHOT`. The files to copy are listed here.
+Unlike the dockerized services which are pre-built and ready to use you must build (or download from our Nexus using the provided shell scripts in the `tomcat/conf-reference/{aqcu or nwisra}` subdirectories) the WARs for the AQCU legacy Tomcat and NWIS-RA Tomcat and place them into the respective webapps directories of those tomcat instances with the correct file names (generally just involves removing build info from the built WARs like the version number and `SNAPSHOT`. The files to copy are listed here.
+
+Git Repos for the projects to build these WAR files:
+
+AQCU: https://github.com/USGS-CIDA/AQCU
+NWIS-RA: https://github.com/USGS-CIDA/NWIS-VISION-GUI
 
 #### AQCU Legacy Tomcat
  - AQCU Calc --> aqcu-calc.war
  - AQCU Data Retrieval --> aqcu-data-retrieval.war
- - AQCU Proc Split --> aqcu-prox-split.war
+ - AQCU Proc Split --> aqcu-proc-split.war
  - AQCU Renderer --> aqcu-renderer.war
  - AQCU Report Gen --> aqcu-report-gen.war
  - AQCU Webservice --> aqcu-webservice.war
  - AQCU XForm --> aqcu-xform.war
- - AQCU Data Synchronizer --> operwator.war
+ - AQCU Data Synchronizer --> operator.war
 
 #### NWIS-RA Tomcat
  - Reporting UI --> reporting-ui.war
