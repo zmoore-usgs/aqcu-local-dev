@@ -7,11 +7,13 @@ In order to help prevent accidental commiting of secrets and other non-public co
 - aqcu-local-dev/docker/*
 - aqcu-local-dev/tomcat/aqcu/*
 - aqcu-local-dev/tomcat/nwisra/*
+- aqcu-local-dev/tomcat/conf-reference/aqcu/webapps/*
+- aqcu-local-dev/tomcat/conf-reference/nwisra/webapps/*
 
 If you want to make changes to the configuration that is persisted and can be used by future users of this project you should make those changes to the equivalent file(s) in one of these directories. **Please be sure to not commit any secret values or other non-public configuration (passwords, usernames, internal URLs, etc.).**
 
 - aqcu-local-dev/docker-reference/* (Docker configuration and secrets)
-- aqcu-local-dev/tomcat/conf-reference/* (AQCU Legacy Tomcat and NWIS-RA Tomcat configuration)
+- aqcu-local-dev/tomcat/conf-reference/* (*Other than /webapps) (AQCU Legacy Tomcat and NWIS-RA Tomcat configuration)
 
 ## Setup
 
