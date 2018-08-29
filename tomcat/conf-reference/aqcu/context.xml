@@ -124,20 +124,6 @@
         override="true"
         />
     <Environment
-        name="nwis-ra.service.url"
-        type="java.lang.String"
-        value="https://localhost:8444/reporting-ws-core/service"
-        description=""
-        override="true"
-        />
-    <Environment
-        name="nwis-ra.service.url.internal.route"
-        type="java.lang.String"
-        value="https://localhost:8444/reporting-ws-core/service"
-        description=""
-        override="true"
-        />
-    <Environment
         name="redis.disable"
         type="java.lang.String"
         value="true"

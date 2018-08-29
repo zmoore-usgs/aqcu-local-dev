@@ -134,8 +134,6 @@
 
     <Environment name="nwis/serviceEndpoint" override="true" type="java.lang.String" value="https://localhost:8444/reporting-ws-core/service" />
     <Environment name="nwis/timeSeriesEndpoint" override="true" type="java.lang.String" value="https://localhost:8445/timeseries/" />
-    <Environment name="nwis/visionAdminUser" override="true" type="java.lang.String" value="apiuser" />
-    <Environment name="nwis/visionAdminPass" override="true" type="java.lang.String" value="changeMe" />
     <Environment name="nwis/schemaName" override="true" type="java.lang.String" value="natdb" />
     <Environment name="nwis/helpEmail" override="true" type="java.lang.String" value="example@usgs.gov" />
 
