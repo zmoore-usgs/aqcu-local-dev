@@ -2,4 +2,6 @@ tomcat/aqcu/*
 tomcat/nwisra/*
 tomcat/conf-reference/aqcu/webapps/*
 tomcat/conf-reference/nwisra/webapps/*
-docker/*
+ssl/keystore
+ssl/tomcat.pkcs12
+ssl/wildcard.*
