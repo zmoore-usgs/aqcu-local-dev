@@ -5,9 +5,9 @@
     &secrets-config
     secrets:
       - source: tomcat_ssl_crt
-        target: /home/spring/tomcat-wildcard-ssl.crt
+        target: /certificates/tomcat-wildcard-dev.crt
       - source: tomcat_ssl_key
-        target: /home/spring/tomcat-wildcard-ssl.key
+        target: /certificates/tomcat-wildcard-dev.key
 
   secrets:
     tomcat_ssl_crt:
