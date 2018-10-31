@@ -1,7 +1,9 @@
-#!/bin/bash -ex
+#!/bin/bash
 
 # Create wildcard certificates: ./create_keys.sh
-# Create domain-specific certificates: ./create_keys.sh some.domain.name
+# Create certificate with IP alt name: ./create_keys.sh "IP:192.168.99.100"
+# Create certificate with DNS alt name: ./create_keys.sh "DNS:workbench.local"
+# Create certificate with mixed alt namse: ./create_keys.sh "IP:192.168.99.100,DNS:workbench.local"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 HOSTNAME="${1:-DNS:localhost}"
