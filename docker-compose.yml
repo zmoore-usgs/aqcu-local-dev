@@ -11,9 +11,9 @@
 
   secrets:
     tomcat_ssl_crt:
-      file: ./ssl/tomcat-wildcard-dev.crt
+      file: ./ssl/wildcard.crt
     tomcat_ssl_key:
-      file: ./ssl/tomcat-wildcard-dev.key
+      file: ./ssl/wildcard.key
 
   services:
     water-auth:
