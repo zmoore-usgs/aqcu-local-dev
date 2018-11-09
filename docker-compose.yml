@@ -110,6 +110,105 @@
         - ./docker/configuration/common/config.env
         - ./docker/secrets/aqcu-dv-hydro-report/secrets.env
         - ./docker/secrets/common/secrets.env
+    aqcu-corr-report:
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-corr-report:latest
+      container_name: aqcu-corr-report
+      network_mode: "host"
+      ports:
+        - "7505:7505"
+      depends_on:
+        - "water-auth"
+      << : *secrets-config
+      env_file:
+        - ./docker/configuration/aqcu-corr-report/config.env
+        - ./docker/configuration/common/config.env
+        - ./docker/secrets/aqcu-corr-report/secrets.env
+        - ./docker/secrets/common/secrets.env
+    aqcu-dc-report:
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-dc-report:latest
+      container_name: aqcu-dc-report
+      network_mode: "host"
+      ports:
+        - "7504:7504"
+      depends_on:
+        - "water-auth"
+      << : *secrets-config
+      env_file:
+        - ./docker/configuration/aqcu-dc-report/config.env
+        - ./docker/configuration/common/config.env
+        - ./docker/secrets/aqcu-dc-report/secrets.env
+        - ./docker/secrets/common/secrets.env
+    aqcu-ext-report:
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-ext-report:latest
+      container_name: aqcu-ext-report
+      network_mode: "host"
+      ports:
+        - "7507:7507"
+      depends_on:
+        - "water-auth"
+      << : *secrets-config
+      env_file:
+        - ./docker/configuration/aqcu-ext-report/config.env
+        - ./docker/configuration/common/config.env
+        - ./docker/secrets/aqcu-ext-report/secrets.env
+        - ./docker/secrets/common/secrets.env
+    aqcu-srs-report:
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-srs-report:latest
+      container_name: aqcu-srs-report
+      network_mode: "host"
+      ports:
+        - "7506:7506"
+      depends_on:
+        - "water-auth"
+      << : *secrets-config
+      env_file:
+        - ./docker/configuration/aqcu-srs-report/config.env
+        - ./docker/configuration/common/config.env
+        - ./docker/secrets/aqcu-srs-report/secrets.env
+        - ./docker/secrets/common/secrets.env
+    aqcu-svp-report:
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-svp-report:latest
+      container_name: aqcu-svp-report
+      network_mode: "host"
+      ports:
+        - "7509:7509"
+      depends_on:
+        - "water-auth"
+      << : *secrets-config
+      env_file:
+        - ./docker/configuration/aqcu-svp-report/config.env
+        - ./docker/configuration/common/config.env
+        - ./docker/secrets/aqcu-svp-report/secrets.env
+        - ./docker/secrets/common/secrets.env
+    aqcu-uv-hydro-report:
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-uv-hydro-report:latest
+      container_name: aqcu-uv-hydro-report
+      network_mode: "host"
+      ports:
+        - "7508:7508"
+      depends_on:
+        - "water-auth"
+      << : *secrets-config
+      env_file:
+        - ./docker/configuration/aqcu-uv-hydro-report/config.env
+        - ./docker/configuration/common/config.env
+        - ./docker/secrets/aqcu-uv-hydro-report/secrets.env
+        - ./docker/secrets/common/secrets.env
+    aqcu-vdi-report:
+      image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-vdi-report:latest
+      container_name: aqcu-vdi-report
+      network_mode: "host"
+      ports:
+        - "7510:7510"
+      depends_on:
+        - "water-auth"
+      << : *secrets-config
+      env_file:
+        - ./docker/configuration/aqcu-vdi-report/config.env
+        - ./docker/configuration/common/config.env
+        - ./docker/secrets/aqcu-vdi-report/secrets.env
+        - ./docker/secrets/common/secrets.env
+
     aqcu-lookups:
       image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-lookups:latest
       container_name: aqcu-lookups
