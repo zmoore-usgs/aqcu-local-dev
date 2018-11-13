@@ -50,7 +50,7 @@ Navigate to /ssl/ and run the create_keys.sh script to generate wildcard certs. 
 as done here (prior to running this command ensure that your $JAVA_HOME environment variable is properly set to the JDK you intend to use for running the tomcat instances - if it is not set you may need to set it manually):
 
 ```
-cd /ssl/
+cd ./ssl/
 $JAVA_HOME/bin/keytool -import -file ./wildcard.crt -keystore $JAVA_HOME/jre/lib/security/cacerts -alias aqcu-localhost
 ```
 
@@ -178,7 +178,7 @@ _Services Used_: Services that must be running for this service to be fully func
 #### aqcu-dv-hydro-report (and 5Yr)
  - Individual Launch Command: `sudo docker-compose up aqcu-dv-hydro-report`
  - Dependencies: water-auth
- - Service Used: water-auth, aqcu-java-to-r, Aquarius
+ - Service Used: water-auth, aqcu-java-to-r, Aquarius, NWIS-RA
  - Port: 7502
  - Context Path: /
  - Test URL: https://localhost:7502/swagger-ui.html
@@ -210,7 +210,7 @@ _Services Used_: Services that must be running for this service to be fully func
 #### aqcu-uv-hydro-report
  - Individual Launch Command: `sudo docker-compose up aqcu-uv-hydro-report`
  - Dependencies: water-auth
- - Service Used: water-auth, aqcu-java-to-r, Aquarius
+ - Service Used: water-auth, aqcu-java-to-r, Aquarius, NWIS-RA
  - Port: 7508
  - Context Path: /
  - Test URL: https://localhost:7508/swagger-ui.html
