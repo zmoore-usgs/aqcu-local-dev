@@ -13,8 +13,15 @@ aqcu/aqcu-repgen:latest
 aqcu/aqcu-ui:latest
 aqcu/aqcu-gateway:latest
 aqcu/aqcu-java-to-r:latest
-aqcu/aqcu-tss-report:latest
+aqcu/aqcu-corr-report:latest
+aqcu/aqcu-dc-report:latest
 aqcu/aqcu-dv-hydro-report:latest
+aqcu/aqcu-ext-report:latest
+aqcu/aqcu-srs-report:latest
+aqcu/aqcu-svp-report:latest
+aqcu/aqcu-tss-report:latest
+aqcu/aqcu-uv-hydro-report:latest
+aqcu/aqcu-vdi-report:latest
 aqcu/aqcu-lookups:latest
 "
 for IMAGE in $IMAGES; do

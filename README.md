@@ -21,7 +21,7 @@ If you want to make changes to the configuration that is persisted and can be us
 The docker configuration is currently located in `aqcu-local-dev/docker-reference/`. This represents the reference configuration and is what users of this project should start from. You should make a copy of this directory called `docker` in the same root directory of this project (so you'd end up with `aqcu-local-dev/docker-reference/configuration/...` and `aqcu-local-dev/docker/configuration...`). Any local configuration changes you want to make should be done to your files in `aqcu-local-dev/docker` as these are the ones that will be read by the docker-compose file and these are ignored by the gitignore.
 
 ### Set up the Tomcat Instances
-Follow the steps in the README located in the tomcat sub-directory of this project.
+Follow the steps in the [README](/tomcat/README.md) located in the tomcat sub-directory of this project.
 
 ### Build and Copy Tomcat WARs
 Unlike the dockerized services which are pre-built and ready to use you must build (or download from our Nexus using the provided shell scripts in the `tomcat/conf-reference/{aqcu or nwisra}` subdirectories) the WARs for the AQCU legacy Tomcat and NWIS-RA Tomcat and place them into the respective webapps directories of those tomcat instances with the correct file names (generally just involves removing build info from the built WARs like the version number and `SNAPSHOT`. The files to copy are listed here.
@@ -46,13 +46,12 @@ NWIS-RA: https://github.com/USGS-CIDA/NWIS-VISION-GUI
  - Reporting WS Core --> reporting-ws-core.war
 
 ### Import Certs
-
-You must import the cert from ./ssl/tomcat-wildcard-dev.crt into the Java cacerts (or provide the tomcats with a custom truststore)
+Navigate to /ssl/ and run the create_keys.sh script to generate wildcard certs. Then import the wildcard.crt to the Java cacerts (or provide the tomcats with a custom truststore) 
 as done here (prior to running this command ensure that your $JAVA_HOME environment variable is properly set to the JDK you intend to use for running the tomcat instances - if it is not set you may need to set it manually):
 
 ```
 cd ./ssl/
-$JAVA_HOME/bin/keytool -import -file ./tomcat-wildcard-dev.crt -keystore $JAVA_HOME/jre/lib/security/cacerts -alias aqcu-localhost
+$JAVA_HOME/bin/keytool -import -file ./wildcard.crt -keystore $JAVA_HOME/jre/lib/security/cacerts -alias aqcu-localhost
 ```
 
 ### Configuration Values to change:
@@ -88,7 +87,7 @@ Because there are inter-dependencies between services the startup order is very 
 ### Terminal 2: `cd tomcat/nwisra/bin && ./catalina.sh start && tail -f ../logs/catalina.out`
  - Starts NWIS-RA
 ### Terminal 3: `sudo docker-compose up`
- - Starts aqcu-gateway, aqcu-ui, aqcu-lookups, aqcu-tss-report, aqcu-dv-hydro-report, and aqcu-java-to-r.
+ - Starts aqcu-gateway, aqcu-ui, aqcu-lookups, aqcu-java-to-r, aqcu-tss-report, aqcu-dv-hydro-report (which is also used for the 5Yr report), aqcu-dc-report, aqcu-corr-report, aqcu-srs-report, aqcu-ext-report, aqcu-uv-hydro-report, aqcu-svp-report, and aqcu-vdi-report. You can specify which of the report services to start up specifically after _sudo docker-compose up_, in case you have memory limitations. Starting all services may overwhelm your VM/machine. For example to start just one report, _sudo docker-compose up aqcu-gateway aqcu-ui aqcu-lookups aqcu-java-t-r aqcu-tss-report_
 ### Terminal 4: `cd tomcat/aqcu/bin && ./catalina.sh start && tail -f ../logs/catalina.out`
  - Starts AQCU Legacy Tomcat
 
@@ -144,22 +143,6 @@ _Services Used_: Services that must be running for this service to be fully func
  - Context Path: /
  - Test URL: https://localhost:7500/swagger-ui.html
 
-#### aqcu-tss-report
- - Individual Launch Command: `sudo docker-compose up aqcu-tss-report`
- - Dependencies: water-auth
- - Service Used: water-auth, aqcu-java-to-r, Aquarius
- - Port: 7501
- - Context Path: /
- - Test URL: https://localhost:7501/swagger-ui.html
-
-#### aqcu-dv-hydro-report
- - Individual Launch Command: `sudo docker-compose up aqcu-dv-hydro-report`
- - Dependencies: water-auth
- - Service Used: water-auth, aqcu-java-to-r, Aquarius
- - Port: 7502
- - Context Path: /
- - Test URL: https://localhost:7502/swagger-ui.html
-
 #### aqcu-lookups
  - Individual Launch Command: `sudo docker-compose up aqcu-lookups`
  - Dependencies: water-auth
@@ -175,6 +158,70 @@ _Services Used_: Services that must be running for this service to be fully func
  - Port: 8445
  - Context Path: /timeseries
  - Test URL: https://localhost:8445/timeseries
+
+#### aqcu-corr-report
+ - Individual Launch Command: `sudo docker-compose up aqcu-corr-report`
+ - Dependencies: water-auth
+ - Service Used: water-auth, aqcu-java-to-r, Aquarius
+ - Port: 7505
+ - Context Path: /
+ - Test URL: https://localhost:7505/swagger-ui.html
+
+#### aqcu-ext-report
+ - Individual Launch Command: `sudo docker-compose up aqcu-ext-report`
+ - Dependencies: water-auth
+ - Service Used: water-auth, aqcu-java-to-r, Aquarius
+ - Port: 7507
+ - Context Path: /
+ - Test URL: https://localhost:7507/swagger-ui.html
+
+#### aqcu-dv-hydro-report (and 5Yr)
+ - Individual Launch Command: `sudo docker-compose up aqcu-dv-hydro-report`
+ - Dependencies: water-auth
+ - Service Used: water-auth, aqcu-java-to-r, Aquarius, NWIS-RA
+ - Port: 7502
+ - Context Path: /
+ - Test URL: https://localhost:7502/swagger-ui.html
+
+#### aqcu-srs-report
+ - Individual Launch Command: `sudo docker-compose up aqcu-srs-report`
+ - Dependencies: water-auth
+ - Service Used: water-auth, aqcu-java-to-r, Aquarius
+ - Port: 7506
+ - Context Path: /
+ - Test URL: https://localhost:7506/swagger-ui.html
+
+#### aqcu-svp-report
+ - Individual Launch Command: `sudo docker-compose up aqcu-svp-report`
+ - Dependencies: water-auth
+ - Service Used: water-auth, aqcu-java-to-r, Aquarius
+ - Port: 7509
+ - Context Path: /
+ - Test URL: https://localhost:7509/swagger-ui.html
+
+#### aqcu-tss-report
+ - Individual Launch Command: `sudo docker-compose up aqcu-tss-report`
+ - Dependencies: water-auth
+ - Service Used: water-auth, aqcu-java-to-r, Aquarius
+ - Port: 7501
+ - Context Path: /
+ - Test URL: https://localhost:7501/swagger-ui.html
+
+#### aqcu-uv-hydro-report
+ - Individual Launch Command: `sudo docker-compose up aqcu-uv-hydro-report`
+ - Dependencies: water-auth
+ - Service Used: water-auth, aqcu-java-to-r, Aquarius, NWIS-RA
+ - Port: 7508
+ - Context Path: /
+ - Test URL: https://localhost:7508/swagger-ui.html
+
+#### aqcu-vdi-report
+ - Individual Launch Command: `sudo docker-compose up aqcu-vdi-report`
+ - Dependencies: water-auth
+ - Service Used: water-auth, aqcu-java-to-r, Aquarius
+ - Port: 7510
+ - Context Path: /
+ - Test URL: https://localhost:7510/swagger-ui.html
 
 #### NWIS-RA Tomcat (must manually build and copy WARs as described below)
  - Individual Launch Command: `cd tomcat/nwisra/bin && ./catalina.sh start && tail -f ../logs/catalina.out`
