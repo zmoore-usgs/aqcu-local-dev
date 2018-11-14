@@ -4,4 +4,4 @@ tomcat/conf-reference/aqcu/webapps/*
 tomcat/conf-reference/nwisra/webapps/*
 ssl/**
 !ssl/create_keys.sh
-docker/
+docker/*
