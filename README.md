@@ -18,10 +18,10 @@ If you want to make changes to the configuration that is persisted and can be us
 ## Setup
 
 ### Copy Reference Docker Configuration
-The docker configuration is currently located in `aqcu-local-dev/docker/`. This represents the reference configuration and is what users of this project should start from. Any local configuration changes you want to make should be done to your files in `aqcu-local-dev/docker/` as these are the ones that will be read by the docker-compose file. Take care not to commit any secrets if you make changes to these configuration files.
+The docker configuration is currently located in `aqcu-local-dev/docker-reference/`. This represents the reference configuration and is what users of this project should start from. You should make a copy of this directory called `docker` in the same root directory of this project (so you'd end up with `aqcu-local-dev/docker-reference/configuration/...` and `aqcu-local-dev/docker/configuration...`). Any local configuration changes you want to make should be done to your files in `aqcu-local-dev/docker` as these are the ones that will be read by the docker-compose file and these are ignored by the gitignore.
 
 ### Set up the Tomcat Instances
-Follow the steps in the README located in the tomcat sub-directory of this project.
+Follow the steps in the [README](/tomcat/README.md) located in the tomcat sub-directory of this project.
 
 ### Build and Copy Tomcat WARs
 Unlike the dockerized services which are pre-built and ready to use you must build (or download from our Nexus using the provided shell scripts in the `tomcat/conf-reference/{aqcu or nwisra}` subdirectories) the WARs for the AQCU legacy Tomcat and NWIS-RA Tomcat and place them into the respective webapps directories of those tomcat instances with the correct file names (generally just involves removing build info from the built WARs like the version number and `SNAPSHOT`. The files to copy are listed here.
