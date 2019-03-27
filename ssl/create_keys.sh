@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Create wildcard certificates: ./create_keys.sh
 # Create certificate with IP alt name: ./create_keys.sh "IP:192.168.99.100"
@@ -14,7 +14,7 @@ rm -f $DIR/wildcard* || true
 
 openssl genrsa -out $DIR/wildcard.key 2048
 openssl req -nodes -newkey rsa:2048 -keyout $DIR/wildcard.key -out $DIR/wildcard.csr -extensions SAN -reqexts SAN \
-    -config <(cat /etc/ssl/openssl.cnf <(printf "\n[SAN]\nkeyUsage = nonRepudiation, digitalSignature, keyEncipherment\nbasicConstraints = CA:FALSE\nsubjectAltName=${HOSTNAME}")) \
+    -config <(cat /etc/ssl/openssl.cnf <(printf "\n[SAN]\nkeyUsage = nonRepudiation, digitalSignature, keyEncipherment\nbasicConstraints = CA:FALSE\nsubjectAltName =${HOSTNAME}")) \
     -subj "/C=US/ST=Wisconsin/L=Middleon/O=US Geological Survey/OU=WMA/CN=*"
 openssl x509 -req \
   -extfile <(printf "keyUsage = nonRepudiation, digitalSignature, keyEncipherment\nbasicConstraints = CA:FALSE\nsubjectAltName=${HOSTNAME}") \
