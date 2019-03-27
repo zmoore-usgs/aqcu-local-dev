@@ -87,7 +87,7 @@ Because there are inter-dependencies between services the startup order is very 
 ### Terminal 2: `cd tomcat/nwisra/bin && ./catalina.sh start && tail -f ../logs/catalina.out`
  - Starts NWIS-RA
 ### Terminal 3: `sudo docker-compose up`
- - Starts aqcu-gateway, aqcu-ui, aqcu-lookups, aqcu-java-to-r, aqcu-tss-report, aqcu-dv-hydro-report (which is also used for the 5Yr report), aqcu-dc-report, aqcu-corr-report, aqcu-srs-report, aqcu-ext-report, aqcu-uv-hydro-report, aqcu-svp-report, and aqcu-vdi-report. You can specify which of the report services to start up specifically after _sudo docker-compose up_, in case you have memory limitations. Starting all services may overwhelm your VM/machine. For example to start just one report, _sudo docker-compose up aqcu-gateway aqcu-ui aqcu-lookups aqcu-java-t-r aqcu-tss-report_
+ - Starts aqcu-gateway, aqcu-ui, aqcu-lookups, aqcu-java-to-r, aqcu-tss-report, aqcu-dv-hydro-report (which is also used for the 5Yr report), aqcu-dc-report, aqcu-corr-report, aqcu-srs-report, aqcu-ext-report, aqcu-uv-hydro-report, aqcu-svp-report, and aqcu-vdi-report. You can specify which of the report services to start up specifically after _sudo docker-compose up_, in case you have memory limitations. Starting all services may overwhelm your VM/machine. For example to start just one report, _sudo docker-compose up aqcu-gateway aqcu-ui aqcu-lookups aqcu-java-to-r aqcu-tss-report_
 ### Terminal 4: `cd tomcat/aqcu/bin && ./catalina.sh start && tail -f ../logs/catalina.out`
  - Starts AQCU Legacy Tomcat
 
