@@ -69,6 +69,14 @@ _Services Used_: Services that must be running for this service to be fully func
  - Context Path: /auth
  - Test URL: https://localhost:8443/auth
 
+#### mock-s3
+ - Individual Launch Command: `docker-compose up mock-s3`
+ - Dependencies: None
+ - Services Used: None
+ - Port: 80
+ - Context Path: /
+ - Test URL: http://localhost:80 (Should list all buckets currently in the mock S3 server)
+
 #### rserve
  - Individual Launch Command: `docker-compose up rserve`
  - Dependencies: None
