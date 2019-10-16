@@ -32,16 +32,14 @@
       ports:
         - "6311:6311"
       << : *secrets-config
-    rabbitmq:
-      image: rabbitmq:3-management
-      container_name: rabbitmq
+    mock-s3:
+      image: andrewgaul/s3proxy:latest
+      container_name: mock-s3
+      hostname: s3.mock.server
       ports:
-        - "5672:5672"
-        - "15672:15672"
-        - "25672:25672"
+        - "8080:80"
       env_file:
-        - ./docker/configuration/rabbitmq/config.env
-        - ./docker/secrets/rabbitmq/secrets.env
+        - ./docker/configuration/mock-s3/config.env
     aqcu-ui:
       image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-ui:latest
       container_name: aqcu-ui
@@ -76,6 +74,8 @@
       network_mode: "host"
       ports:
         - "7500:7500"
+      depends_on:
+        - "water-auth"
       << : *secrets-config
       env_file:
         - ./docker/configuration/aqcu-java-to-r/config.env
@@ -208,13 +208,14 @@
         - ./docker/configuration/common/config.env
         - ./docker/secrets/aqcu-vdi-report/secrets.env
         - ./docker/secrets/common/secrets.env
-
     aqcu-lookups:
       image: cidasdpdasartip.cr.usgs.gov:8447/aqcu/aqcu-lookups:latest
       container_name: aqcu-lookups
       network_mode: "host"
       ports:
         - "7503:7503"
+      depends_on:
+        - "water-auth"
       << : *secrets-config
       env_file:
         - ./docker/configuration/aqcu-lookups/config.env
