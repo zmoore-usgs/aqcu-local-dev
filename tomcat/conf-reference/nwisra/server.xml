@@ -84,7 +84,7 @@
         SSLEnabled="true"
         SSLProtocol="TLS"
         SSLCipherSuite="ALL:!LOW:!EXP:!SSLv2"
-        keystoreFile="POINT_ME_TO_FULL_PATH_OF_../../ssl/keystore" 
+        keystoreFile="POINT_ME_TO_FULL_PATH_OF_KEYSTORE" 
         keystorePass="changeit"
         SSLPassword="NONE"
         SSLVerifyClient="none"
