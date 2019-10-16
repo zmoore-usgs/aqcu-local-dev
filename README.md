@@ -100,9 +100,9 @@ _Services Used_: Services that must be running for this service to be fully func
  - Individual Launch Command: `docker-compose up mock-s3`
  - Dependencies: None
  - Services Used: None
- - Port: 80
+ - Port: 8080
  - Context Path: /
- - Test URL: http://localhost:80 (Should list all buckets currently in the mock S3 server)
+ - Test URL: http://localhost:8080 (Should list all buckets currently in the mock S3 server)
 
 #### rserve (part of start-backing-services.sh)
  - Individual Launch Command: `docker-compose up rserve`

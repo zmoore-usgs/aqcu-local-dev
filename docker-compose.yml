@@ -35,7 +35,6 @@
     mock-s3:
       image: andrewgaul/s3proxy:latest
       container_name: mock-s3
-      network_mode: "host"
       hostname: s3.mock.server
       ports:
         - "8080:80"
