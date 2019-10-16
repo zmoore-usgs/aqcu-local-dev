@@ -61,7 +61,7 @@ _Dependencies_: Services that must be running before this service can even start
 
 _Services Used_: Services that must be running for this service to be fully functional.
 
-#### water-auth
+#### water-auth (part of start-backing-services.sh)
  - Individual Launch Command: `docker-compose up water-auth`
  - Dependencies: None
  - Services Used: None
@@ -69,7 +69,7 @@ _Services Used_: Services that must be running for this service to be fully func
  - Context Path: /auth
  - Test URL: https://localhost:8443/auth
 
-#### mock-s3
+#### mock-s3 (part of start-backing-services.sh)
  - Individual Launch Command: `docker-compose up mock-s3`
  - Dependencies: None
  - Services Used: None
@@ -77,7 +77,7 @@ _Services Used_: Services that must be running for this service to be fully func
  - Context Path: /
  - Test URL: http://localhost:80 (Should list all buckets currently in the mock S3 server)
 
-#### rserve
+#### rserve (part of start-backing-services.sh)
  - Individual Launch Command: `docker-compose up rserve`
  - Dependencies: None
  - Services Used: None
