@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  AquariusEndpointParameter:
+    Type: String
+    AllowedPattern: .+
+    Description: The Aquarius Endpoint to use for Lambda Reports (without /AQUARIUS/)
+    Default: CHANGE_ME
+  AquariusUserParameter:
+    Type: String
+    AllowedPattern: .+
+    Description: The username to use when connecting to Aquarius
+    Default: CHANGE_ME
+  AquariusPasswordParameter:
+    Type: String
+    AllowedPattern: .+
+    Description: The password to use when connecting to Aquarius
+    Default: CHANGE_ME
+
+Resources:
+  GWVRStatReportFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: jars/gw-vrstat-report.jar
+      Handler: gov.usgs.aqcu.lambda.handler.LambdaReportHandler
+      Runtime: java8
+      Timeout: 90
+      MemorySize: 512
+      Environment:
+        Variables:
+          AQUARIUS_SERVICE_ENDPOINT: !Ref AquariusEndpointParameter
+          AQUARIUS_SERVICE_USER: !Ref AquariusUserParameter
+          AQUARIUS_SERVICE_PASSWORD: !Ref AquariusPasswordParameter
+          REPORT_APPROVAL_WORKING: 900
+          REPORT_APPROVAL_ANALYZED: 1100
+          REPORT_APPROVAL_APPROVED: 1200
+          REPORT_APPROVAL_ADMIN: 1300

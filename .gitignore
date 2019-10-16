@@ -3,3 +3,5 @@ tomcat/conf-reference/nwisra/webapps/*
 ssl/**
 !ssl/create_keys.sh
 docker/*
+lambda/*
+lambda-reference/jars/*
