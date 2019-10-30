@@ -9,7 +9,7 @@ launch_services () {
 }
 
 create_s3_bucket () {
-  curl --request PUT "http://${DOCKER_ENGINE_IP}:8080/aqcu-report-configs-test"
+  curl --request PUT "http://${DOCKER_ENGINE_IP}:8081/aqcu-report-configs-test"
 }
 
 echo "Launching AQCU Backing Services..."
@@ -21,7 +21,7 @@ if [[ $EXIT_CODE -ne 0 ]]; then
 fi
 
 echo "Waiting for S3 Mock to come up..."
-until curl "${DOCKER_ENGINE_IP}:8080" | grep -q "amazon"; do sleep 4; done
+until curl "${DOCKER_ENGINE_IP}:8081" | grep -q "amazon"; do sleep 4; done
 
 echo "Creating test s3 bucket..."
 EXIT_CODE=$(create_s3_bucket)
