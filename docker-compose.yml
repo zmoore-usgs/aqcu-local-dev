@@ -37,7 +37,7 @@
       container_name: mock-s3
       hostname: s3.mock.server
       ports:
-        - "8080:80"
+        - "8081:80"
       env_file:
         - ./docker/configuration/mock-s3/config.env
     aqcu-ui:
