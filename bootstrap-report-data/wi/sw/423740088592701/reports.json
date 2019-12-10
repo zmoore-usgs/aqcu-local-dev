@@ -1,0 +1,89 @@
+{
+    "parameterDefaults": {},
+    "savedReports": {
+        "226a5b31-7752-4397-b3da-f52d4cabad36": {
+            "id": "226a5b31-7752-4397-b3da-f52d4cabad36",
+            "reportName": "DV Hydro",
+            "reportType": "dvhydro",
+            "lastModifiedUser": null,
+            "createdUser": null,
+            "primaryParameter": "Discharge",
+            "parameterValues": {
+                "primaryTimeseriesIdentifier": [
+                    "7ea22ef06b2f40cb8370b0311a88bef5"
+                ],
+                "firstStatDerivedIdentifier": [
+                    "1ddfe0ac80f3458da7e1a791392112f9"
+                ],
+                "station": [
+                    "423740088592701"
+                ],
+                "lastMonths": [
+                    "12"
+                ]
+            }
+        },
+        "a9fe75f5-8d6f-4a49-8845-27ff86ea72fe": {
+            "id": "a9fe75f5-8d6f-4a49-8845-27ff86ea72fe",
+            "reportName": "CORR",
+            "reportType": "corr",
+            "lastModifiedUser": null,
+            "createdUser": null,
+            "primaryParameter": "Discharge",
+            "parameterValues": {
+                "primaryTimeseriesIdentifier": [
+                    "7ea22ef06b2f40cb8370b0311a88bef5"
+                ],
+                "station": [
+                    "423740088592701"
+                ],
+                "lastMonths": [
+                    "12"
+                ]
+            }
+        }
+    },
+    "savedReportsList": [
+        {
+            "id": "226a5b31-7752-4397-b3da-f52d4cabad36",
+            "reportName": "DV Hydro",
+            "reportType": "dvhydro",
+            "lastModifiedUser": null,
+            "createdUser": null,
+            "primaryParameter": "Discharge",
+            "parameterValues": {
+                "primaryTimeseriesIdentifier": [
+                    "7ea22ef06b2f40cb8370b0311a88bef5"
+                ],
+                "firstStatDerivedIdentifier": [
+                    "1ddfe0ac80f3458da7e1a791392112f9"
+                ],
+                "station": [
+                    "423740088592701"
+                ],
+                "lastMonths": [
+                    "12"
+                ]
+            }
+        },
+        {
+            "id": "a9fe75f5-8d6f-4a49-8845-27ff86ea72fe",
+            "reportName": "CORR",
+            "reportType": "corr",
+            "lastModifiedUser": null,
+            "createdUser": null,
+            "primaryParameter": "Discharge",
+            "parameterValues": {
+                "primaryTimeseriesIdentifier": [
+                    "7ea22ef06b2f40cb8370b0311a88bef5"
+                ],
+                "station": [
+                    "423740088592701"
+                ],
+                "lastMonths": [
+                    "12"
+                ]
+            }
+        }
+    ]
+}
