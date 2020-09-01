@@ -8,5 +8,5 @@ artifacts=(
 )
 
 for artifact in "${artifacts[@]}"; do
-  curl -L -k -o webapps/$artifact.war -X GET "https://cida.usgs.gov/maven/service/local/artifact/maven/redirect?r=cida-public-releases&g=gov.usgs.nwis.reporting&a=${artifact}&v=LATEST&e=war"
+  curl -L -k -o webapps/$artifact.war -X GET "https://artifactory.wma.chs.usgs.gov/artifactory/cida-public-releases/gov/usgs/nwis/reporting/${artifact}/1.25/${artifact}-1.25.war"
 done
