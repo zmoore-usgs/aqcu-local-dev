@@ -33,7 +33,7 @@ The docker configuration is currently located in `aqcu-local-dev/docker-referenc
 The Lambda configuration is currently located in `aqcu-local-dev/lambda-reference/`. This represents the reference configuration and is what users of this project should start from. You should make a copy of this directory called `lambda` in the same root directory of this project (so you'd end up with `aqcu-local-dev/lambda-reference/...` and `aqcu-local-dev/lambda/...`). Any local configuration changes you want to make should be done to your files in `aqcu-local-dev/lambda` as these are the ones that will be read by the AWS SAM Local Lambda CLI and these are ignored by the gitignore.
 
 ### Setup Lambda JARs
-If you are planning to run one the Lambda Based reports you will need to obtain the Lambda fat-JARs for those reports. This can be done either by cloning and building the reports from their respective Git repos, or by running the `pull-lambda-jars.sh` script found in `aqcu-local-dev/lambda` (after copying `aqcu-local-dev/lambda-reference`).
+If you are planning to run any of the Lambda Based reports you will need to obtain the Lambda fat-JARs for those reports. This can be done either by cloning and building the reports from their respective Git repos, or by running the `pull-lambda-jars.sh` script found in `aqcu-local-dev/lambda` (after copying `aqcu-local-dev/lambda-reference`) from within the `aqcu-local-dev/lambda` directory so that the resulting JAR filepaths are `aqcu-local-dev/lambda/jars/*.jar`.
 
 ### Setup the NWIS-RA Tomcat
 If you are planning to run a UVHydrograph or DVHydrograph report you will need to setup the NWIS-RA Tomcat.
