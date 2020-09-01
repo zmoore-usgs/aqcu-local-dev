@@ -36,3 +36,20 @@ Resources:
           REPORT_APPROVAL_ANALYZED: 1100
           REPORT_APPROVAL_APPROVED: 1200
           REPORT_APPROVAL_ADMIN: 1300
+  GWVExtReportFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: jars/gw-vext-report.jar
+      Handler: gov.usgs.aqcu.lambda.handler.LambdaReportHandler
+      Runtime: java8
+      Timeout: 90
+      MemorySize: 512
+      Environment:
+        Variables:
+          AQUARIUS_SERVICE_ENDPOINT: !Ref AquariusEndpointParameter
+          AQUARIUS_SERVICE_USER: !Ref AquariusUserParameter
+          AQUARIUS_SERVICE_PASSWORD: !Ref AquariusPasswordParameter
+          REPORT_APPROVAL_WORKING: 900
+          REPORT_APPROVAL_ANALYZED: 1100
+          REPORT_APPROVAL_APPROVED: 1200
+          REPORT_APPROVAL_ADMIN: 1300

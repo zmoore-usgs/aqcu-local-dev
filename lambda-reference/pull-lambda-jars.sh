@@ -4,13 +4,13 @@ mkdir -p jars
 
 artifacts=(
   gw-vrstat-report
+  gw-vext-report
 )
 
 pull_from_artifactory() {
-    repo_url="https://cida.usgs.gov/artifactory/aqcu-maven-centralized/gov/usgs/aqcu"
+    repo_url="https://artifactory.wma.chs.usgs.gov/artifactory/wma-maven/gov/usgs/aqcu"
     artifact=$1
-    uri_formatted_group=`echo $group | tr . /`
-    version=`curl -k -s $repo_url/"$(echo "$group" | tr . /)"/$artifact/maven-metadata.xml | grep latest | sed "s/.*<latest>\([^<]*\)<\/latest>.*/\1/"`
+    version=`curl -k -s $repo_url/$artifact/maven-metadata.xml | grep latest | sed "s/.*<latest>\([^<]*\)<\/latest>.*/\1/"`
     resource_endpoint="${repo_url}/${artifact}/${version}/${artifact}-${version}-aws.jar"
 
     echo "$(date) | Start fetch $resource_endpoint"
