@@ -42,7 +42,7 @@ Follow the steps in the [README](/tomcat/README.md) located in the tomcat sub-di
 ### Configuration Values to change:
 Note that anything currently configured with `https://localhost:9999` is done because those endpoints are not really necessary to get AQCU up and running locally. They are primarily used for links within the UI or within reports, but are not used functionally by the application at all. They can be optionally set to real values if desired, but it is unecessary and will essentially have no impact on the system.
 
-#### docker/config/common/config.env
+#### docker/configuration/common/config.env
  - aquariusServiceEndpoint - The endpoint of the Aquarius system that you want to connect to (_without_ /AQUARIUS/)
  - aquariusServiceUser     - The username for the Aquarius tier you're connecting to
 
@@ -118,7 +118,7 @@ _Services Used_: Services that must be running for this service to be fully func
  - Services Used: water-auth, aqcu-lookups, aqcu-*-report, aqcu-java-to-r
  - Port: 7499
  - Context Path: /
- - Test URL: https://localhost:7499/swagger-ui.html
+ - Test URL: https://localhost:7499/auth/token
 
 #### aqcu-java-to-r
  - Individual Launch Command: `docker-compose up aqcu-java-to-r`
