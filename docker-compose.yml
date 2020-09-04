@@ -33,11 +33,12 @@
         - "6311:6311"
       << : *secrets-config
     mock-s3:
-      image: andrewgaul/s3proxy:latest
+      image: adobe/s3mock
       container_name: mock-s3
       hostname: s3.mock.server
       ports:
-        - "8081:80"
+        - "9090:9090"
+        - "9091:9091"
       env_file:
         - ./docker/configuration/mock-s3/config.env
     aqcu-ui:

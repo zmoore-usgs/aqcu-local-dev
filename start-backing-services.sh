@@ -9,7 +9,7 @@ launch_services () {
 }
 
 create_s3_bucket () {
-  curl --request PUT "http://${DOCKER_ENGINE_IP}:8081/aqcu-report-configs-test"
+  curl --request PUT "http://${DOCKER_ENGINE_IP}:9090/aqcu-report-configs-test"
 }
 
 load_bootstrap_s3_data() {
@@ -36,7 +36,7 @@ load_bootstrap_s3_data() {
 # $1 - Path of JSON file to upload within bootstrap-report-data
 # $2 - Path in S3 to upload to within aqcu-report-configs-test bucket
 upload_s3_data() {
-  curl --header "Content-Type: application/json" --request PUT --data "$(echo $(cat ./bootstrap-report-data/$1))" "http://localhost:8081/aqcu-report-configs-test/$2"
+  curl --header "Content-Type: application/json" --request PUT --data "$(echo $(cat ./bootstrap-report-data/$1))" "http://localhost:9090/aqcu-report-configs-test/$2"
 }
 
 echo "Launching AQCU Backing Services..."
@@ -48,7 +48,7 @@ if [[ $EXIT_CODE -ne 0 ]]; then
 fi
 
 echo "Waiting for S3 Mock to come up..."
-until curl "${DOCKER_ENGINE_IP}:8081" | grep -q "amazon"; do sleep 4; done
+until curl "${DOCKER_ENGINE_IP}:9090" | grep -q "s3-mock"; do sleep 4; done
 
 echo "Creating test S3 bucket..."
 EXIT_CODE=$(create_s3_bucket)
