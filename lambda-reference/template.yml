@@ -25,7 +25,7 @@ Resources:
       CodeUri: jars/gw-vrstat-report.jar
       Handler: gov.usgs.aqcu.lambda.handler.LambdaReportHandler
       Runtime: java8
-      Timeout: 90
+      Timeout: 600
       MemorySize: 512
       Environment:
         Variables:
@@ -42,7 +42,7 @@ Resources:
       CodeUri: jars/gw-vext-report.jar
       Handler: gov.usgs.aqcu.lambda.handler.LambdaReportHandler
       Runtime: java8
-      Timeout: 90
+      Timeout: 600
       MemorySize: 512
       Environment:
         Variables:
