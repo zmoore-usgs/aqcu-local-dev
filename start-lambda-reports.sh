@@ -1,2 +1,2 @@
 cd ./lambda
-sam local start-lambda
+sam local start-lambda --docker-network=host
